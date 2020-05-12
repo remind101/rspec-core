@@ -1,8 +1,12 @@
-# rspec-core [![Build Status](https://secure.travis-ci.org/rspec/rspec-core.svg?branch=master)](http://travis-ci.org/rspec/rspec-core) [![Code Climate](https://codeclimate.com/github/rspec/rspec-core.svg)](https://codeclimate.com/github/rspec/rspec-core)
+# Ruby Feature Request: rspec-core
 
-rspec-core provides the structure for writing executable examples of how your
+rspec-core is a gem that provides the structure for writing executable examples of how your
 code should behave, and an `rspec` command with tools to constrain which
 examples get run and tailor the output.
+
+Your goal is to implement the following feature request:
+
+> It would be nice to be able to configure the number of failures before rspec exits out, so something like --fail-fast 5, so that I can get 5 failing tests at a time instead of having to choose between either one or all of them.
 
 ## Install
 
@@ -44,7 +48,7 @@ RSpec.describe Order do
 end
 ```
 
-The `describe` method creates an [ExampleGroup](http://rubydoc.info/gems/rspec-core/RSpec/Core/ExampleGroup).  Within the
+The `describe` method creates an [ExampleGroup](http://rubydoc.info/gems/rspec-core/RSpec/Core/ExampleGroup). Within the
 block passed to `describe` you can declare examples using the `it` method.
 
 Under the hood, an example group is a class in which the block passed to
@@ -171,12 +175,12 @@ end
 
 RSpec has two scopes:
 
-* **Example Group**: Example groups are defined by a `describe` or
+- **Example Group**: Example groups are defined by a `describe` or
   `context` block, which is eagerly evaluated when the spec file is
   loaded. The block is evaluated in the context of a subclass of
   `RSpec::Core::ExampleGroup`, or a subclass of the parent example group
   when you're nesting them.
-* **Example**: Examples -- typically defined by an `it` block -- and any other
+- **Example**: Examples -- typically defined by an `it` block -- and any other
   blocks with per-example semantics -- such as a `before(:example)` hook -- are
   evaluated in the context of
   an _instance_ of the example group class to which the example belongs.
@@ -186,7 +190,7 @@ RSpec has two scopes:
 
 To make this more concrete, consider this code snippet:
 
-``` ruby
+```ruby
 RSpec.describe "Using an array as a stack" do
   def build_stack
     []
@@ -214,7 +218,7 @@ end
 
 Under the covers, this is (roughly) equivalent to:
 
-``` ruby
+```ruby
 class UsingAnArrayAsAStack < RSpec::Core::ExampleGroup
   def build_stack
     []
@@ -242,7 +246,7 @@ end
 
 To run these examples, RSpec would (roughly) do the following:
 
-``` ruby
+```ruby
 example_1 = UsingAnArrayAsAStack.new
 example_1.before_example_1
 example_1.it_is_initially_empty
@@ -364,6 +368,6 @@ Finished in 0.000379 seconds
 
 ## Also see
 
-* [http://github.com/rspec/rspec](http://github.com/rspec/rspec)
-* [http://github.com/rspec/rspec-expectations](http://github.com/rspec/rspec-expectations)
-* [http://github.com/rspec/rspec-mocks](http://github.com/rspec/rspec-mocks)
+- [http://github.com/rspec/rspec](http://github.com/rspec/rspec)
+- [http://github.com/rspec/rspec-expectations](http://github.com/rspec/rspec-expectations)
+- [http://github.com/rspec/rspec-mocks](http://github.com/rspec/rspec-mocks)
