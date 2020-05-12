@@ -8,6 +8,10 @@ Your goal is to implement the following feature request:
 
 > It would be nice to be able to configure the number of failures before rspec exits out, so something like --fail-fast 5, so that I can get 5 failing tests at a time instead of having to choose between either one or all of them.
 
+The documentation below is for the rspec-core gem itself.
+
+Happy coding!
+
 ## Install
 
     gem install rspec      # for rspec-core, rspec-expectations, rspec-mocks
